@@ -1,0 +1,285 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@page import="com.estarcom.cnis.cssn.common.User,java.util.Calendar,java.util.GregorianCalendar" %>
+ <%
+	String path = request.getContextPath();
+    String tenantname="";
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+	String para=request.getParameter("from");
+	String url=(String)request.getAttribute("url");
+	if(url==null)
+		url="";
+	if(para==null)
+		para="default";
+	tenantname=(String)session.getAttribute("tenantname");
+%>  
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>用户登录,注册</title>
+	<base href="<%=basePath%>">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="asserts/css/bootstrapValidator.css"/>
+
+    <script type="text/javascript" src="asserts/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="asserts/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="asserts/js/bootstrapValidator.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <section>
+                <div class="col-lg-8 col-lg-offset-2 col-sm-8 col-sm-offset-2">
+                    <div class="page-header">
+                        <h2>欢迎使用文献检索中心</h2>
+                    </div>
+                    <ul  id="myTab" class="nav nav-tabs">
+                        <li class="active"><a href="#info-tab" data-toggle="tab">登录界面 <i class="fa"></i></a></li>
+                        <li><a href="#address-tab" data-toggle="tab">注册 <i class="fa"></i></a></li>
+                    </ul>
+
+                    
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="info-tab">
+                            	 <% if(!para.equals("wronglogin"))
+		                        	{
+		                        	   if(!para.equals("registersuccess"))
+		                        	   {
+		                        	%>
+			                     <div class="alert alert-info" role="alert" style="margin-top: 30px;">
+			                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								 请输入您的用户名和密码
+								</div>
+								<%
+		                        	}
+		                           	else
+		                           	{
+									%>
+								<div class="alert alert-success alert-dismissible" role="alert" style="margin-top: 30px;">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								注册成功，<strong>请登录！</strong>
+								</div>
+									<%
+		                        	}
+		                        	}
+		                           	else
+		                           	{
+									%>
+								<div class="alert alert-danger alert-dismissible" role="alert" style="margin-top: 30px;">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								错误的用户名或密码，<strong>请重试！</strong>
+								</div>
+								<%} %>
+								<form id="defaultForm" method="post" class="form-horizontal" action="${pageContext.request.contextPath}/login.htm?from=<%=para%>&url=<%=url%>" style="margin-top: 30px;">
+			                        <div class="form-group">
+			                            <label class="col-lg-3 control-label">用户名</label>
+			                            <div class="col-lg-5">
+			                                <input type="text" class="form-control" placeholder="请输入您的用户名 " name="username" />
+			                            </div>
+			                        </div>
+									<div class="form-group">
+						            	<label class="col-lg-3 control-label">密码</label>
+						            		<div class="col-lg-5">
+                        						<input type="password" class="form-control" name="password" />
+                  							</div>
+               						</div>
+			                        <div class="form-group">
+			                            <div class="col-lg-9 col-lg-offset-3">
+			                                <button type="submit" class="btn btn-primary">登录</button>
+			                            </div>
+			                        </div>
+		                 	   </form>
+                            </div>
+
+                            <div class="tab-pane" id="address-tab">
+                            <% if(!para.equals("wrongrname"))
+		                        {
+		                        	%>
+		                           <div class="alert alert-info" role="alert" style="margin-top: 30px;">
+					                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										 请按照要求输入以下信息
+								  </div>
+								  <%
+		                        }
+                            	else
+                            	{
+								  %>
+								  <div class="alert alert-danger" role="alert" style="margin-top: 30px;">
+					                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										用户名已存在
+								  </div>
+								  <%} %>
+	                            <form id="defaultForm1" method="post" class="form-horizontal" action="${pageContext.request.contextPath}/register.htm?from=register" style="margin-top: 30px;">
+	                            		<div class="form-group">
+									     <label class="col-lg-3 col-sm-3 control-label">单位</label>
+									    <div class="col-lg-5 col-sm-5">
+									      <p class="form-control-static"><span class="label label-info"><%= tenantname%></span></p>
+									    </div>
+									    </div>
+				                        <div class="form-group">
+				                            <label class="col-lg-3  col-sm-3 control-label">用户名</label>
+				                            <div class="col-lg-5 col-sm-5">
+				                                <input type="text" class="form-control" name="username" />
+				                            </div>
+				                        </div>
+				                        <div class="form-group">
+				                            <label class="col-lg-3  col-sm-3 control-label">真实姓名</label>
+				                            <div class="col-lg-5 col-sm-5">
+				                                <input type="text" class="form-control" name="realname" />
+				                            </div>
+				                        </div>
+				                        <div class="form-group">
+				                            <label class="col-lg-3  col-sm-3 control-label">电子邮件</label>
+				                            <div class="col-lg-5 col-sm-5">
+				                                <input type="text" class="form-control" name="email" />
+				                            </div>
+				                        </div>
+										<div class="form-group">
+			                                <label class="col-lg-3 col-sm-3 control-label">密码</label>
+			                                <div class="col-lg-5 col-sm-5">
+			                                    <input type="password" class="form-control" name="password" />
+			                                </div>
+			                            </div>
+			
+			                            <div class="form-group">
+			                                <label class="col-lg-3 col-sm-3 control-label">确认密码</label>
+			                                <div class="col-lg-5 col-sm-5">
+			                                    <input type="password" class="form-control" name="confirmPassword" />
+			                                </div>
+			                            </div>
+				                        <div class="form-group">
+				                            <div class="col-lg-9 col-lg-offset-3 col-sm-9 col-sm-offset-3">
+				                                <button type="submit" class="btn btn-primary">注册</button>
+				                            </div>
+				                        </div>
+			                 	   </form>
+                            
+                            </div>
+                               
+                               
+                            </div>
+                        </div>
+                      
+
+            </section>
+        </div>
+    </div>
+
+<script type="text/javascript">
+$(function () {
+	var page="<%=para%>";
+	if(page=="wrongrname")
+		
+    	$('#myTab li:eq(1) a').tab('show');
+	else
+		;
+ });
+$(document).ready(function() {
+    $('#defaultForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: '用户名不能为空'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: '用户名至少为6位'
+                    }
+                }
+            },
+	        password: {
+	            validators: {
+	                notEmpty: {
+	                    message: '密码不能为空'
+	                }
+
+	            }
+	        }
+        }
+    });
+    $('#defaultForm1').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            username: {
+                message: 'The username is not valid',
+                validators: {
+                    notEmpty: {
+                        message: '用户名不能为空'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: '用户名至少为6位'
+                    },
+                    different: {
+                        field: 'password',
+                        message: '用户名不能和密码相同'
+                    }
+                }
+	            },
+	            email: {
+	                validators: {
+	                    notEmpty: {
+	                        message: '邮件不能为空'
+	                    },
+	                    emailAddress: {
+	                        message: '请输入正确的邮件地址'
+	                    }
+	                }
+	            },
+	            password: {
+	                validators: {
+	                    notEmpty: {
+	                        message: '密码不能为空'
+	                    },
+	                    stringLength: {
+	                        min: 6,
+	                        max: 30,
+	                        message: '密码至少为6位'
+	                    },
+	                    identical: {
+	                        field: 'confirmPassword',
+	                        message: '两次密码输入不一致'
+	                    }
+	                }
+	            },
+	            confirmPassword: {
+	                validators: {
+	                    notEmpty: {
+	                        message: '确认密码不能为空'
+	                    },
+	                    stringLength: {
+	                        min: 6,
+	                        max: 30,
+	                        message: '密码至少为6位'
+	                    },
+	                    identical: {
+	                        field: 'password',
+	                        message: '两次密码输入不一致'
+	                    }
+	                }
+	            },
+	        }
+    });
+});
+</script>
+</body>
+</html>

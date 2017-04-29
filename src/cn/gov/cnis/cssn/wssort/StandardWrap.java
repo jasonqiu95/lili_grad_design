@@ -1,0 +1,97 @@
+package cn.gov.cnis.cssn.wssort;
+
+import java.io.Serializable;
+/**
+ * 
+ * 提供检索详细页面信息展示数据的类
+ *
+ */
+public class StandardWrap implements Serializable {
+	private String a001; // 记录标识符
+	private String a000; // 记录状态
+	private String a100; // 文献号
+	private String a298;// 中文标准名称
+	private String a302;// 英文标准名称
+	private Pagination pagination;
+/**
+ * 获取记录识别符
+ * @return 记录识别符
+ */
+	public String getA001() {
+		return a001;
+	}
+/**
+ * 设置记录识别符
+ * @param a001 记录识别符
+ */
+	public void setA001(String a001) {
+		this.a001 = a001;
+	}
+/**
+ * 获取标准状态
+ * @return 标准状态
+ */
+	public String getA000() {
+		return a000;
+	}
+/**
+ * 设置标准状态
+ * @param a000 标准状态
+ */
+	public void setA000(String a000) {
+		this.a000 = a000;
+	}
+/**
+ * 获取标准号
+ * @return  标准号
+ */
+	public String getA100() {
+		return a100;
+	}
+
+	/**
+	 * 设置标准号
+	 * @param a100 标准号
+	 */
+	public void setA100(String a100) {
+		this.a100 = a100;
+	}
+/**
+ * 获取中文标准名称
+ * @return 中文标准名称
+ */
+	public String getA298() {
+		return a298;
+	}
+/**
+ * 设置中文标准名称
+ * @param a298 中文标准名称
+ */
+	public void setA298(String a298) {
+		this.a298 = a298;
+	}
+/**
+ * 获取英文标准名称
+ * @return 英文标准名称
+ */
+	public String getA302() {
+		return a302;
+	}
+/**
+ * 设置英文标题名称
+ * @param a302 英文标题名称
+ */
+	public void setA302(String a302) {
+		this.a302 = a302;
+	}
+
+public Pagination getPagination() {
+
+	return pagination;
+}
+
+public void setPagination(Pagination pagination) {
+
+	this.pagination = pagination;
+}
+}

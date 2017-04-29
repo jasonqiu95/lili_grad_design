@@ -1,0 +1,172 @@
+/*detailpage*/
+
+.detailLeft{ float:left;width:759px;}
+
+.detailRight{ float:right; width:230px;}
+
+
+
+.detailbg,.detailbg02{ background:url(../img/detailbg.png) repeat-y #fff; width:990px; padding:0;}
+
+.detailbg02{ background-image:url(../img/detailbg02.png); min-height:600px;}
+
+.detailRight dl.otherLink{ margin-bottom:0;} 
+
+.detailRight dt{ border-bottom:1px solid #ddd; padding:18px 15px 5px 15px;color:#444;}
+
+.detailRight dt p{ padding:0; margin:0;color:#999; font-weight:normal;}
+
+.detailRight dd{ border-top:1px solid #fff; margin:0;}
+
+.detailRight dd ul{ margin-top:10px; padding:0 15px 0 10px;}
+
+.detailRight dd ul li{ padding-bottom:5px;}
+
+.detailRight dd ul li p,.detailLeft .table td p,dl.detailBox>dd.row-fluid>.span5>dl>dd p{ line-height:14px; color:#666; margin:0;}
+
+.detailRight dd ul li:last-child{ list-style:none; text-align:right; padding-right:10px;}
+
+.detailRight dd ul li p.tred03{ color:#F00;}
+
+
+
+.detailRight dd ul.otherBook{ list-style:none; padding:5px 10px; margin:0;}
+
+.detailRight dd ul.otherBook li{ border-bottom:1px solid #ddd; padding:10px 5px; height:75px;}
+
+.detailRight dd ul.otherBook li img{ float:left; margin-right:10px;}
+
+.newtit{ display:block; height:36px; overflow:hidden; margin-bottom:8px;}
+
+.detailRight dd ul.otherBook li:last-child{ text-align:left;padding:10px 5px;}
+
+
+
+.detailtopBox{ border-bottom:1px solid #ddd; min-height:100px; position:relative;
+
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+
+     -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);}
+
+.detailtopBox h3{ text-align:center;font:18px/28px "microsoft yahei"; padding-top:5px;}
+
+.detailtopBox dl.dl-horizontal{ margin-top:5px; margin-bottom:10px;}
+
+.detailtopBox dl.dl-horizontal dt,.detailtopBox dl.dl-horizontal dd{ height:22px; line-height:22px;}
+
+.detailtopBox dl.dl-horizontal-more{ padding-left:35px; padding-top:5px; margin-top:0px; margin-bottom:0px;}
+
+.detailtopBox dl.dl-horizontal-more dt,.detailtopBox dl.dl-horizontal-more dd{ min-height:20px;*height:20px;}
+
+.newshead{padding:20px 20px 0 20px;min-height:60px;}
+
+.bookbgc{background-color:#fff;}
+
+.nowbgc{ background-color:#E8F2FD;}
+
+.newbgc{ background-color:#F3FCE2;}
+
+.invalidbgc{ background-color:#eee;}
+
+.detailtopBox .row-fluid .span4{ width:28%; float:none; position:absolute; bottom:10px; right:20px; text-align:center;}
+
+.detailtopBox strong{ color:#666;}
+
+.btnBox{ margin-top:15px; text-align:right}
+
+.marked{background-color:#3a87ad; padding:1px 5px; margin:-2px 0 0 5px; color:#fff;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;}
+
+.detailtopBox h3 .marked{ font-size:12px; font-weight:normal;}
+
+.newbgc .marked{background-color:#468847; }
+
+.invalidbgc .marked{background-color:#999; }
+
+
+
+
+
+.detailBox{color:#666;margin:10px 10px 10px 40px;}
+
+dl.detailBox{ color:#666;margin-left:8px; }
+
+dl.detailBox>dt,dl.detailBox>dd.row-fluid>.span5>dl>dt,i.norm,i.rule{background:url(../img/icon_detail.png) no-repeat;}
+
+i.treatise{background:url(../img/treatise.png) no-repeat;}
+
+i.periodical{background:url(../img/periodical.png) no-repeat;}
+
+dl.detailBox>dt{padding-left:40px; height:37px; line-height:37px; font-size:13px;}
+
+dl.detailBox>dt.icon_info{ background-position:0 -30px;}
+
+dl.detailBox>dt.icon_scope{background-position:0 -70px;}
+
+dl.detailBox>dt.icon_assoc{background-position:0 -110px;}
+
+dl.detailBox>dt.icon_sort{background-position:0 -300px;}
+
+dl.detailBox>dt.icon_other{background-position:0 -150px;}
+
+dl.detailBox>dt.icon_att{ background-position:0 -340px;}
+
+dl.detailBox>dd{ margin-left:40px;margin-right:20px;}
+
+dl.detailBox>dd.row-fluid>.span5{ width:45%;min-height:0;}
+
+dl.detailBox>dd.row-fluid>.span5>dl{ margin-top:0px;border:1px solid #ddd;-webkit-border-radius:4px 4px 0px 0px;-moz-border-radius:4px 4px 0px 0px;border-radius:4px 4px 0px 0px;}
+
+dl.detailBox>dd.row-fluid>.span5>dl>dt{ border-bottom:1px solid #ddd; background-color:#f2f3f4; height:30px; line-height:30px; padding-left:35px;}
+
+dl.detailBox>dd.row-fluid>.span5>dl>dt.cite01{background-position:5px -187px;}
+
+dl.detailBox>dd.row-fluid>.span5>dl>dt.cite02{background-position:5px -227px;}
+
+dl.detailBox>dd.row-fluid>.span5>dl>dd{ border-bottom:1px dashed #ddd; margin:0 10px; padding:10px 0;}
+
+dl.detailBox>dd.row-fluid>.span5>dl>dd:last-child{border-bottom:none;}
+
+
+
+.detailLeft .table td{ border-top:none; border-bottom:1px dashed #dddddd;}
+
+.detailLeft .table tr td:first-child{ width:31px; padding:12px 0px 0px 10px;}
+
+.detailLeft .table tr td:last-child{ text-align:right; padding:11px 10px 0 0;}
+
+i.norm,i.rule{ background-position:0 0; height:25px; width:31px;display:inline-block;}
+
+i.periodical{ background-position:0 0; height:25px; width:31px;display:inline-block;}
+
+i.treatise{ background-position:0 0; height:25px; width:31px;display:inline-block;}
+
+i.rule{ background-position:0 -270px;}
+
+.bookhead{ width:680px; margin:10px auto; padding:25px 10px; border-bottom:1px solid #ddd;}
+
+.bookhead h3{ text-align:center;font:bold 20px/28px "microsoft yahei";}
+
+
+
+.bookexBox{ width:690px; margin:20px auto; padding:5px;}
+
+.bookimg,.bookex{ float:left; margin-right:30px;}
+
+.bookimg{width:140; height:210px; overflow:hidden;}
+
+.bookex{ width:360px; font-size:14px; color:#666; line-height:22px;}
+
+.bkprice{ float:right; width:130px; text-align:right;}
+
+
+
+.bkprice span{color:#ff7f00; font-size:20px;  font-weight:bold; padding:0 5px;}
+
+
+
+.bookCon{ width:700px; margin:10px auto;}
+
+.bookCon p{ font-size:14px; color:#666; line-height:22px; padding:0 10px 5px 10px;}
+

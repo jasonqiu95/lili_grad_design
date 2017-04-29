@@ -1,0 +1,379 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="com.saas.po.UserInfo"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+	UserInfo u=(UserInfo)session.getAttribute("user");
+%>  
+
+    <!--
+        ===
+        This comment should NOT be removed.
+
+        Charisma v2.0.0
+
+        Copyright 2012-2014 Muhammad Usman
+        Licensed under the Apache License v2.0
+        http://www.apache.org/licenses/LICENSE-2.0
+
+        http://usman.it
+        http://twitter.com/halalit_usman
+        ===
+    -->
+    <meta charset="utf-8">
+    <title>标准跟踪服务</title>
+    <base href="<%=basePath%>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="Muhammad Usman">
+
+    <!-- The styles -->
+    <link id="bs-css" href="css/bootstrap-cerulean.min.css" rel="stylesheet">
+
+    <link href="css/charisma-app.css" rel="stylesheet">
+    <link href='bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='bower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='css/jquery.noty.css' rel='stylesheet'>
+    <link href='css/noty_theme_default.css' rel='stylesheet'>
+    <link href='css/elfinder.min.css' rel='stylesheet'>
+    <link href='css/elfinder.theme.css' rel='stylesheet'>
+    <link href='css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='css/uploadify.css' rel='stylesheet'>
+    <link href='css/animate.min.css' rel='stylesheet'>
+
+    <!-- jQuery -->
+    <script src="bower_components/jquery/jquery.min.js"></script>
+
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+</head>
+<%@ page import="cn.gov.cnis.cssn.wssort.*"%>
+<%
+		StandardTracking res1[]=(StandardTracking[])request.getAttribute("rest");
+		StandardPush res2[]=(StandardPush[])request.getAttribute("resp");
+		int length=res1.length;
+		int lengthp=0;
+		int num=0;
+		if(res2==null)
+			;
+		else
+			lengthp=res2.length;
+
+		System.out.println("standardtrackingt: "+length);
+		System.out.println("standardtrackingp: "+lengthp);
+%>
+<body>
+    <!-- topbar starts -->
+    <div class="navbar navbar-default" role="navigation">
+
+        <div class="navbar-inner">
+            <!-- <button type="button" class="navbar-toggle pull-left animated flip">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button> -->
+            <a class="navbar-brand" href="index.htm"> <!-- <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/> -->
+                <span>标准资源跟踪</span></a>
+
+            <!-- user dropdown starts -->
+            <div class="btn-group pull-right">
+                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> 尊敬的<%=u.getAccount()%>用户您好</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="logining.htm?from=change">更改用户</a></li>
+                    <li class="divider"></li>
+                    <li><a href="unlogin.htm">注销</a></li>
+                </ul>
+            </div>
+            <!-- user dropdown ends -->
+
+<!--             theme selector starts
+            <div class="btn-group pull-right theme-container animated tada">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-tint"></i><span
+                        class="hidden-sm hidden-xs"> Change Theme / Skin</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" id="themes">
+                    <li><a data-value="classic" href="#"><i class="whitespace"></i> Classic</a></li>
+                    <li><a data-value="cerulean" href="#"><i class="whitespace"></i> Cerulean</a></li>
+                    <li><a data-value="cyborg" href="#"><i class="whitespace"></i> Cyborg</a></li>
+                    <li><a data-value="simplex" href="#"><i class="whitespace"></i> Simplex</a></li>
+                    <li><a data-value="darkly" href="#"><i class="whitespace"></i> Darkly</a></li>
+                    <li><a data-value="lumen" href="#"><i class="whitespace"></i> Lumen</a></li>
+                    <li><a data-value="slate" href="#"><i class="whitespace"></i> Slate</a></li>
+                    <li><a data-value="spacelab" href="#"><i class="whitespace"></i> Spacelab</a></li>
+                    <li><a data-value="united" href="#"><i class="whitespace"></i> United</a></li>
+                </ul>
+            </div>
+            theme selector ends -->
+
+            <ul class="collapse navbar-collapse nav navbar-nav top-menu">
+                <li>
+                    <form class="navbar-search pull-left" action="${pageContext.request.contextPath }/search/base.htm">
+                        <input placeholder="标准资源检索" class="search-query form-control col-md-10" name="keyword" id="keyword"
+                               type="text">
+                    </form>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <!-- topbar ends -->
+<div class="ch-container">
+    <div class="row">
+        
+        <!-- left menu starts -->
+        <div class="col-sm-2 col-lg-2">
+            <div class="sidebar-nav">
+                <div class="nav-canvas">
+                    <div class="nav-sm nav nav-stacked">
+
+                    </div>
+                    <ul class="nav nav-pills nav-stacked main-menu">
+                        <li class="nav-header">标准服务</li>
+                        <li><a href="${pageContext.request.contextPath }/search/search_base.jsp"><i class="glyphicon glyphicon-lock"></i><span>标准资源检索</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="${pageContext.request.contextPath }/mystandard/track.htm"><i class="glyphicon glyphicon-eye-open"></i><span>标准资源跟踪</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+        <!-- left menu ends -->
+
+        <noscript>
+            <div class="alert alert-block col-md-12">
+                <h4 class="alert-heading">Warning!</h4>
+
+                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                    enabled to use this site.</p>
+            </div>
+        </noscript>
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+                <div>
+        <ul class="breadcrumb">
+            <li>
+                <a href="index.htm">主页</a>
+            </li>
+            <li>
+                <a href="#">标准跟踪</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+    <div class="box col-md-12">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-user"></i> 标准跟踪列表</h2>
+
+        <div class="box-icon">
+            <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
+            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                    class="glyphicon glyphicon-chevron-up"></i></a>
+            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+    <div class="alert alert-info">已定制<font color="red"><%=length %></font>条 标准跟踪信息</div>
+    
+	   <div class="alert alert-success alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <strong>请注意!</strong>您所跟踪的标准文献如果存在变动，会置顶显示变动的标准文献，如果您已经知晓了这条变动，请点击操作中的<font color="red">确认</font>按钮来取消置顶。
+	</div>
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>标准号</th>
+        <th>标准名称</th>
+         <th>订阅日期</th>
+        <th>标准状态</th> 
+        <th>操作</th>
+                </tr>
+    </thead>
+    <tbody>
+	<%
+	 for(int i=0;i<lengthp;i++)
+	 {
+		 	num++;
+		 	String na001=res2[i].getnA001();	
+		 	String oa001=res2[i].getoA001();
+		 	String nstandnum=res2[i].getnA100();
+		 	String ostandnum=res2[i].getoA100();
+		 	String nstandname=res2[i].getnA298_A302();
+		 	String ostandname=res2[i].getoA298_A302();
+		 	String nstatus=res2[i].getnA000();
+		 	String ostatus=res2[i].getoA000();
+	    	String data=res2[i].getPushDate().toString();
+	    	String relation=res2[i].getRelation();
+	    	String id=res2[i].getId();
+	%>
+
+<tr>
+        <td><%=num%></td>
+         <td class="center"><span class="label-danger label label-default">新：<%=nstandnum%></span><br><br><br><br><br><span class="label-primary label label-default">原：<%=ostandnum%></span></td>
+        <td class="center">
+	        <div class="alert alert-danger">
+	                    <strong>新：<%=nstandname%><br></strong>
+	        </div>
+
+			<div class="alert alert-info">
+                    <strong>原：<%=ostandname%></strong>
+                </div>
+</td>
+       
+      <td class="center"><%=data%></td>
+       <td class="center">
+            <%
+
+															if (nstatus != null
+
+															&& "D".equals(nstatus)) {
+
+														out.print("<span class=\"label-warning label label-default\">作废</span>");
+
+															} else {
+
+														out.print("<span class=\"label-success label label-default\">现行</span>");
+
+															}
+
+												%>
+        </td>
+        <td class="center"> 
+            <a class="btn btn-primary" href="detail/standard_detail.jsp?a001=<%=na001%>">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+              	  查看
+            </a>
+            <br><br><br><br><br>
+            <a class="btn btn-danger" href="${pageContext.request.contextPath }/mystandard/setpushflag.htm?id=<%=id%>">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                	确认 
+            </a>
+        </td> 
+    </tr>
+    <%} %>
+
+
+    <%
+    for(int i=0;i<length;i++)
+    {
+    	num++;
+    	String standnum=res1[i].getA100();
+    	String standname=res1[i].getA298a302();
+    	String status=res1[i].getA000();
+    	String data=res1[i].getCreateDate();
+    	String a001=res1[i].getA001();
+    	System.out.print(standname);
+    	
+    %>
+    <tr>
+        <td><%=num%></td>
+         <td class="center"><%=standnum%></td>
+        <td class="center"><%=standname%></td>
+       
+      <td class="center"><%=data%></td>
+      <td class="center">
+            <%
+
+															if (status != null
+
+															&& "D".equals(res1[i].getA000())) {
+
+														out.print("<span class=\"label-warning label label-default\">作废</span>");
+
+															} else {
+
+														out.print("<span class=\"label-success label label-default\">现行</span>");
+
+															}
+
+												%>
+        </td>
+        <td class="center"> 
+            <a class="btn btn-primary" href="detail/standard_detail.jsp?a001=<%=a001%>">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+              	  查看
+            </a>
+        </td> 
+    </tr>
+    <%} %>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    <!--/span-->
+
+    </div><!--/row-->
+
+   
+            </div>
+        </div>
+    </div>
+
+  
+<!--/.fluid-container-->
+
+<!-- external javascript -->
+
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- library for cookie management -->
+<script src="js/jquery.cookie.js"></script>
+<!-- calender plugin -->
+<script src='bower_components/moment/min/moment.min.js'></script>
+<script src='bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
+<!-- data table plugin -->
+<script src='js/jquery.dataTables.min.js'></script>
+
+<!-- select or dropdown enhancer -->
+<script src="bower_components/chosen/chosen.jquery.min.js"></script>
+<!-- plugin for gallery image view -->
+<script src="bower_components/colorbox/jquery.colorbox-min.js"></script>
+<!-- notification plugin -->
+<script src="js/jquery.noty.js"></script>
+<!-- library for making tables responsive -->
+<script src="bower_components/responsive-tables/responsive-tables.js"></script>
+<!-- tour plugin -->
+<script src="bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+<!-- star rating plugin -->
+<script src="js/jquery.raty.min.js"></script>
+<!-- for iOS style toggle switch -->
+<script src="js/jquery.iphone.toggle.js"></script>
+<!-- autogrowing textarea plugin -->
+<script src="js/jquery.autogrow-textarea.js"></script>
+<!-- multiple file upload plugin -->
+<script src="js/jquery.uploadify-3.1.min.js"></script>
+<!-- history.js for cross-browser state change on ajax -->
+<script src="js/jquery.history.js"></script>
+<!-- application script for Charisma demo -->
+<script src="js/charisma.js"></script>
+
+
+</body>
+</html>
