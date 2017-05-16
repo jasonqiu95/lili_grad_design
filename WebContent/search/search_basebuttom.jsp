@@ -54,13 +54,13 @@ if(session.getAttribute("tenantname")==null)
 		<!--右侧内容区-->
 		<div class="span9 sidecon">
 			<ul class="nav nav-tabs" id="myTab">
-				<li><a href="#simple" data-toggle="tab">简单检索</a></li>
-				<li class="active"><a href="#highRanking" data-toggle="tab">高级检索</a></li>
+				<li class="active"><a href="#simple" data-toggle="tab">简单检索</a></li>
+				<li><a href="#highRanking" data-toggle="tab">高级检索</a></li>
 				<li><a href="#sort" data-toggle="tab">分类检索</a></li>
 			</ul>
 			<div class="tab-content">
 				<!--简单检索-->
-				<div class="tab-pane" id="simple">
+				<div class="tab-pane active" id="simple">
 					<form class="form-horizontal" action="${pageContext.request.contextPath }/search/base.htm" method="get" name="formSearch1" target="_parent">
 						<fieldset>
 							<div class="control-group">
@@ -76,7 +76,7 @@ if(session.getAttribute("tenantname")==null)
 				</div>
 				<!--简单检索结束-->
 				<!--高级检索-->
-				<div class="tab-pane active" id="highRanking">
+				<div class="tab-pane" id="highRanking">
 					<form class="form-horizontal" action="${pageContext.request.contextPath }/search/advanced.htm" method="get" name="formSearch" target="_parent">
 					<input type="hidden" id="paixu" name="paixu" value="asc">
 					<input type="hidden" id="orderby" name="orderby" value="sort_number">
