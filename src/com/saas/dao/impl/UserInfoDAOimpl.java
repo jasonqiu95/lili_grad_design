@@ -47,7 +47,7 @@ public class UserInfoDAOimpl extends HibernateDaoSupport implements UserInfoDAO 
 	}
 
 	@Override
-	public UserInfo getUserName(String username) {
+	public UserInfo getUserName(int username) {
 		
 		return this.getHibernateTemplate().get(UserInfo.class,username);
 	}

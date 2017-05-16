@@ -13,7 +13,7 @@ public interface UserInfoDAO {
 
 	public void add(UserInfo user);
 	
-	public UserInfo login(String account,String password,String tenantname)throws  IndexOutOfBoundsException;
+	public UserInfo login(String account,String password,String tenantname) throws IndexOutOfBoundsException;
 
 	public boolean checkUserName(String username,String tenant);
 
@@ -23,7 +23,7 @@ public interface UserInfoDAO {
 
 	public UserInfo getUser(Integer userId);
 	
-	public UserInfo getUserName(String username);
+	public UserInfo getUserName(int username);
 
 	public List<UserInfo> getAllUser();
 

@@ -12,7 +12,7 @@ public class CustomizationInfoDAOImpl extends HibernateDaoSupport implements Cus
 	@Override
 	public CustomizationInfo getCustomizationByTenant(String tenantAcc) {
 		// TODO Auto-generated method stub
-		String hql = "from Customization c where c.TAccount='"+tenantAcc+"'";
+		String hql = "from CustomizationInfo c where c.TAccount='"+tenantAcc+"'";
 		Query q = this.currentSession().createQuery(hql);
 		if(q.list() != null)
 			return (CustomizationInfo) q.list().get(0);

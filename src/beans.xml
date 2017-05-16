@@ -16,6 +16,10 @@
 			<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
+	<bean id="cusDao" class="com.saas.dao.impl.CustomizationInfoDAOImpl" >
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
 	<bean id="downloadDao" class="com.saas.dao.impl.DownloadInfoDAOimpl" >
 			<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
